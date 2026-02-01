@@ -8,13 +8,31 @@ Asiakas::Asiakas()
 
 Asiakas::Asiakas(string name, double lr) : kayttotili(name), luottotili(name, lr)
 {
-    cout << "Asiakas: olen parametrikonstrukstorissa" << endl;
     nimi = name;
+    cout << "Asiakkuus luotu " << nimi << endl;
 }
 
-bool Asiakas::tilisiirto(double sum, Asiakas& kohde);
+bool Asiakas::tiliSiirto(double summa, Asiakas &kohde)
 {
+    if (summa <= 0)
+    {
+        return false;
+    }
 
+    cout << "Pankkitili: " << nimi << " siirtaa " << summa << " " << kohde.nimi << ":lle" << endl;
+
+    if (!kayttotili.withdraw(summa))
+    {
+        return false;
+    }
+
+    kohde.kayttotili.deposit(summa);
+
+    cout << nimi << " Pankkitili: nosto " << summa << " tehty" << endl;
+
+    cout << kohde.nimi << " Pankkitili: talletus " << summa << " tehty" << endl;
+
+    return true;
 }
 
 string Asiakas::getNimi()
@@ -24,26 +42,26 @@ string Asiakas::getNimi()
 
 void Asiakas::showSaldo()
 {
-    cout << "Kayttotilin saldo: " << kayttotili.getBalace() << endl;
-    cout << "Luottotilin saldo: " << luottotili.getBalace() << endl;
+    cout << "Kayttotilin saldo: " << kayttotili.getBalance() << endl;
+    cout << "Luottotilin saldo: " << luottotili.getBalance() << endl;
 }
 
 bool Asiakas::talletus(double sum)
 {
-    kayttotili.deposit(sum);
+    return kayttotili.deposit(sum);
 }
 
 bool Asiakas::nosto(double sum)
 {
-    kayttotili.withdraw(sum);
+    return kayttotili.withdraw(sum);
 }
 
 bool Asiakas::luotonMaksu(double sum)
 {
-    luottotili.deposit(sum);
+    return luottotili.deposit(sum);
 }
 
 bool Asiakas::luotonNosto(double sum)
 {
-    luottotili.withdraw(sum);
+    return luottotili.withdraw(sum);
 }

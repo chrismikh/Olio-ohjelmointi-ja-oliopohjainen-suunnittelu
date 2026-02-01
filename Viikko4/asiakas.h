@@ -7,19 +7,20 @@ using namespace std;
 
 class Asiakas
 {
-    public:
-        Asiakas();
-        Asiakas(string, double);
-        string getNimi();
-        void showSaldo();
-        bool talletus(double);
-        bool nosto(double);
-        bool luotonMaksu(double);
-        bool luotonNosto(double);
-    private:
-        string nimi;
-        Pankkitili kayttotili;
-        Luottotili luottotili;
+public:
+    Asiakas();
+    Asiakas(string, double);
+    string getNimi();
+    void showSaldo();
+    bool talletus(double);
+    bool nosto(double);
+    bool luotonMaksu(double);
+    bool luotonNosto(double);
+    bool tiliSiirto(double summa, Asiakas &kohde);
+private:
+    string nimi;
+    Pankkitili kayttotili;
+    Luottotili luottotili;
 };
 
 #endif // ASIAKAS_H

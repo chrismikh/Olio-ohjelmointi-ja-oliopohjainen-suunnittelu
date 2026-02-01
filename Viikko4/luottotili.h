@@ -4,14 +4,14 @@
 
 class Luottotili : public Pankkitili
 {
-    public:
-        Luottotili();
-        Luottotili(string, double);
-        virtual bool deposit(double) override;
-        virtual bool withdraw(double) override;
+public:
+    Luottotili();
+    Luottotili(string, double);
+    virtual bool deposit(double) override;
+    virtual bool withdraw(double) override;
 
-    protected:
-        double luottoraja = 0;
+protected:
+    double luottoraja = 0;
 
 };
 

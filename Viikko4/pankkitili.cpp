@@ -4,39 +4,38 @@ using namespace std;
 
 Pankkitili::Pankkitili()
 {
-    cout << "Olen default konstruktorissa" << endl;
+
 }
 
 Pankkitili::Pankkitili(string om)
 {
-    cout << "Olen Pankkitili: parametrikonstruktorissa" << endl;
     omistaja = om;
+    cout << "Pankkitili luotu " << omistaja << ":lle" << endl;
 }
 
-double Pankkitili::getBalace()
+double Pankkitili::getBalance()
 {
-    cout << "Olen saldokyselyssa" << endl;
     return saldo;
 }
 
 bool Pankkitili::deposit(double sum)
 {
-    cout << "Olen Pankkitili: talletuksessa" << endl;
     if (sum < 0)
     {
         return false;
     }
     saldo += sum;
+    //cout << "Pankkitili: talletus " << sum << " tehty" << endl;
     return true;
 }
 
 bool Pankkitili::withdraw(double sum)
 {
-    cout << "Olen Pankkitili: nostossa" << endl;
     if ((sum < 0) || ((saldo - sum) < 0))
     {
         return false;
     }
     saldo -= sum;
+    //cout << "Pankkitili: nosto " << sum << " tehty" << endl;
     return true;
 }
